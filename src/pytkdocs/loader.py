@@ -507,7 +507,8 @@ class Loader:
 
         for attr_name, properties, add_method in (
             ("__fields__", ["pydantic-model"], self.get_pydantic_field_documentation),
-            ("_declared_fields", ["marshmallow-model"], self.get_marshmallow_field_documentation),
+            # crashes on DRF fields 
+            # ("_declared_fields", ["marshmallow-model"], self.get_marshmallow_field_documentation),
             ("__dataclass_fields__", ["dataclass"], self.get_annotated_dataclass_field),
         ):
             if self.detect_field_model(attr_name, direct_members, all_members):
